@@ -5,6 +5,7 @@ const bodyParser = require("body-parser");
 const ejs = require("ejs");
 const _ = require('lodash');
 const mongoose = require('mongoose');
+const env = require('dotenv');
 
 //Starting contents of the blog website
 const homeStartingContent = "Lacus vel facilisis volutpat est velit egestas dui id ornare. Semper auctor neque vitae tempus quam. Sit amet cursus sit amet dictum sit amet justo. Viverra tellus in hac habitasse. Imperdiet proin fermentum leo vel orci porta. Donec ultrices tincidunt arcu non sodales neque sodales ut. Mattis molestie a iaculis at erat pellentesque adipiscing. Magnis dis parturient montes nascetur ridiculus mus mauris vitae ultricies. Adipiscing elit ut aliquam purus sit amet luctus venenatis lectus. Ultrices vitae auctor eu augue ut lectus arcu bibendum at. Odio euismod lacinia at quis risus sed vulputate odio ut. Cursus mattis molestie a iaculis at erat pellentesque adipiscing.";
@@ -14,7 +15,8 @@ const contactContent = "Scelerisque eleifend donec pretium vulputate sapien. Rho
 // Creating an Express app and configuring it to use EJS as its template engine.
 const app = express();
 const PORT = 3000;
-const URL = 'mongodb+srv://khola1pradhan:obSh48tTWXxNbjfO@cluster0.c4m24lg.mongodb.net';
+env.config();
+const URL = process.env.MONGO_URL;
 mongoose.connect(`${URL}/composedPosts`,{useNewUrlParser:true});
 
 // Storing all the composed posts
